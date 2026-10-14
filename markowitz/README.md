@@ -30,27 +30,35 @@ Modular quantitative finance pipeline built in Python. This project implements M
   * Employs the **Baum-Welch (EM) algorithm** for parameter estimation and the **Viterbi algorithm** for state decoding.
   * **Label-Switching Prevention:** Automatically sorts state parameters by volatility variance, ensuring State 0 is strictly enforced as the low-volatility calm regime across pipeline executions.
 
-### 5. Dynamic Backtesting Engine (`backtest.py`) *(Coming Soon / In Development)*
+### 5. Dynamic Backtesting Engine (`backtest.py`)
 * **Walk-Forward Simulation:** Simulates historical out-of-sample portfolio performance over time.
 * **Regime-Switching Allocation Strategy:** Dynamically adjusts asset exposure based on the HMM regime output. Shifts capital from aggressive equities to safe-haven fixed-income assets (`LFTS11`) during high-volatility stress states (State 1) and returns to the Max Sharpe portfolio during calm states (State 0).
 
-### 6. Interactive Web Dashboard (`app.py`) *(Coming Soon / In Development)*
+### (Extra) Pipeline Orchestrator
+Acts as a centralized script that sequentially executes the entire modular workflow from ETL to Backtesting with a single terminal command.
+
+## Planned Future Enhancements
+### Interactive Web Dashboard (`app.py`) *(Coming Soon / In Development)*
 * **Streamlit Interface:** Provides a user-friendly web interface to visualize the Efficient Frontier, Monte Carlo simulation paths, historical asset correlations, and real-time market regime color-coded charts.
 
 
 ## USAGE
 Run the core modules sequentially from your terminal:
 ### 1. Run Data ETL
-python src/data_etl.py
+python data_etl.py
 
 ### 2. Run Volatility Analysis
-python src/volatility.py
+python volatility.py
 
 ### 3. Run Portfolio Optimization & Monte Carlo
-python src/portfolio_opt.py
+python portfolio_opt.py
 
 ### 4. Run Market Regime Detection
-python src/market_regimes.py
+python market_regimes.py
+
+## OR
+Run the pipeline orchestrator directly
+python run_pipeline.py
 
 ### 5. Run Interactive Dashboard (Optional)
-streamlit run src/app.py
+streamlit run app.py
